@@ -3,9 +3,12 @@
 const showBooksTemplate = require('../templates/book-listing.handlebars');
 
 const getBooksSuccess = (data) => {
-  console.log(data);
   let showBooksHtml = showBooksTemplate({ books: data.books });
+  console.log(data);
   $('.content').append(showBooksHtml);
+  $('.remove-button').on('click', function () {
+    $(this).parent().parent().hide()
+  })
 };
 
 const clearBooks = () => {
@@ -19,5 +22,5 @@ const failure = (error) => {
 module.exports = {
   getBooksSuccess,
   clearBooks,
-  failure,
+  failure
 };
